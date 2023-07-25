@@ -9,12 +9,12 @@ os.chdir(os.path.dirname(os.path.realpath(__file__)))
 dir_name = os.path.basename(os.getcwd())
 
 # JSONファイルの読み込み
-with open("test.json", "r", encoding="utf-8") as json_file:
+with open(f"{dir_name}_data.json", "r", encoding="utf-8") as json_file:
     data = json.load(json_file)
 
 # Jinja2環境の設定
 env = Environment(loader=FileSystemLoader('.'))
-template = env.get_template('template.html')
+template = env.get_template('templates/template.html')
 
 # テンプレートにデータを適用
 html_output = template.render(data)

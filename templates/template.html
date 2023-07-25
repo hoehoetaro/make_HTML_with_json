@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title[0].name }}</title>
+    <title>{{ title.name }}</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+    <div class="div-img">
+        <img src="{{ title.thumbnail_source }}" onerror="this.onerror=null; this.parentNode.innerHTML='<h1>'+this.alt+'</h1>';" alt="{{ title.name }}">
+    </div>
+
+    <div class="div-links">
+        <h2>Links</h2>
+        <ul>
+        {% for content in contents %}
+            <li><a href="#{{ content.name | replace(' ', '') }}">{{ content.name }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+
     {% for content in contents %}
+        <div id="{{ content.name | replace(' ', '') }}">
         {% if content.type == 'introduction' %}
             <div class="div-p">
                 <h3>{{ content.name }}</h3>
@@ -20,16 +34,25 @@
                     <dd>{{ content.description }}</dd>
                 </dl>
             </div>
-        {% elif content.type == 'list' %}
-            <div class="div-p">
+        {% elif content.type == 'Grossary_table' %}
+            <div class="div-table">
                 <h3>{{ content.name }}</h3>
-                <ul>
-                    {% for item in content.list %}
-                        <li>
-                            <strong>{{ item.word }}</strong>: {{ item.description }}
-                        </li>
-                    {% endfor %}
-                </ul>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Word</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in content.table %}
+                            <tr>
+                                <td>{{ item.word }}</td>
+                                <td>{{ item.description }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         {% elif content.type == 'table' %}
             <div class="div-table">
@@ -74,6 +97,7 @@
                 <p>{{ content.description }}</p>
             </div>
         {% endif %}
+        </div>
     {% endfor %}
 </body>
 </html>

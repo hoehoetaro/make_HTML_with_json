@@ -18,5 +18,5 @@ data = {
 }
 
 # Serialize to JSON format and write to a file
-with open(f'{current_folder_name}_data.json', 'w') as f:
+with open(f'{current_folder_name}_data.json', 'w', encoding='utf-8') as f:
     json.dump(data, f, ensure_ascii=False, indent=4)
