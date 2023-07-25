@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title[0].name }}</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    {% for content in contents %}
+        {% if content.type == 'introduction' %}
+            <div class="div-p">
+                <h3>{{ content.name }}</h3>
+                <p>{{ content.description }}</p>
+            </div>
+        {% elif content.type == 'glossary' %}
+            <div class="div-p">
+                <h3>{{ content.name }}</h3>
+                <dl>
+                    <dt>{{ content.word }}</dt>
+                    <dd>{{ content.description }}</dd>
+                </dl>
+            </div>
+        {% elif content.type == 'list' %}
+            <div class="div-p">
+                <h3>{{ content.name }}</h3>
+                <ul>
+                    {% for item in content.list %}
+                        <li>
+                            <strong>{{ item.word }}</strong>: {{ item.description }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% elif content.type == 'table' %}
+            <div class="div-table">
+                <h3>{{ content.name }}</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            {% for header in content.headers %}
+                                <th>{{ header }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in content.rows %}
+                            <tr>
+                                {% for cell in row %}
+                                    <td>{{ cell }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% elif content.type == 'code' %}
+            <div class="div-code">
+                <h3>{{ content.name }}</h3>
+                <pre>{{ content.code }}</pre>
+            </div>
+        {% elif content.type == 'img' %}
+            <div class="div-img">
+                <h3>{{ content.name }}</h3>
+                <img src="{{ content.source }}" alt="{{ content.name }}">
+            </div>
+        {% elif content.type == 'video' %}
+            <div class="div-video">
+                <h3>{{ content.name }}</h3>
+                <video src="{{ content.source }}" controls></video>
+            </div>
+        {% elif content.type == 'additional_information' %}
+            <div class="div-p">
+                <h3>{{ content.name }}</h3>
+                <p>{{ content.description }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>
