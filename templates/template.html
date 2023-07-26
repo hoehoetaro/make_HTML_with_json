@@ -20,7 +20,6 @@
     </div>
 
     {% for content in contents %}
-        <div id="{{ content.name | replace(' ', '') }}">
         {% if content.type == 'p' %}
             <div class="div-p">
                 <h3>{{ content.name }}</h3>
