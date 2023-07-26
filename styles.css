@@ -75,7 +75,8 @@ a {
 }
 
 pre {
-    background-color: #f6f8fa;
+    background-color: #000000;
+    color:#ffffff;
     padding: 16px;
     overflow: auto;
     font-family: 'Courier New', monospace;
@@ -115,8 +116,8 @@ button:hover {
 .div-p,
 .div-img,
 .div-video,
-.div-code,
 .div-table,
+.div-code,
 .div-links,
 .div-question,
 .div-answer,
@@ -133,11 +134,6 @@ button:hover {
     background-color: #eeeeee;   
 }
 
-pre  {
-    color:#ffffff;
-    background-color: #000000;
-    font-size: 16px;
-}
 
 
 img, video {
