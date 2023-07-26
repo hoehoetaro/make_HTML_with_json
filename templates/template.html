@@ -21,7 +21,7 @@
 
     {% for content in contents %}
         <div id="{{ content.name | replace(' ', '') }}">
-        {% if content.type == 'introduction' %}
+        {% if content.type == 'p' %}
             <div class="div-p">
                 <h3>{{ content.name }}</h3>
                 <p>{{ content.description }}</p>
@@ -30,7 +30,6 @@
             <div class="div-p">
                 <h3>{{ content.name }}</h3>
                 <dl>
-                    <dt>{{ content.word }}</dt>
                     <dd>{{ content.description }}</dd>
                 </dl>
             </div>
