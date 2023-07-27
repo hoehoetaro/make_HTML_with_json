@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>{{ title.name }}</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+
+
 </head>
 <body>
     <div class="div-img">
@@ -21,19 +23,19 @@
 
     {% for content in contents %}
         {% if content.type == 'p' %}
-            <div class="div-p">
+            <div class="div-p" id="{{ content.name | replace(' ', '') }}">
                 <h3>{{ content.name }}</h3>
                 <p>{{ content.description }}</p>
             </div>
         {% elif content.type == 'glossary' %}
-            <div class="div-p">
+            <div class="div-p" id="{{ content.name | replace(' ', '') }}">
                 <h3>{{ content.name }}</h3>
                 <dl>
                     <dd>{{ content.description }}</dd>
                 </dl>
             </div>
         {% elif content.type == 'glossary_table' %}
-            <div class="div-table">
+            <div class="div-table" id="{{ content.name | replace(' ', '') }}">
                 <h3>{{ content.name }}</h3>
                 <table>
                     <thead>
@@ -53,7 +55,7 @@
                 </table>
             </div>
         {% elif content.type == 'table' %}
-            <div class="div-table">
+            <div class="div-table" id="{{ content.name | replace(' ', '') }}">
                 <h3>{{ content.name }}</h3>
                 <table>
                     <thead>
@@ -75,27 +77,30 @@
                 </table>
             </div>
         {% elif content.type == 'code' %}
-            <div class="div-code">
+            <div class="div-code code-container" id="{{ content.name | replace(' ', '') }}">
                 <h3>{{ content.name }}</h3>
-                <pre>{{ content.code }}</pre>
+                <button onclick="copyToClipboard('codeBlock')">Copy to clipboard</button>
+                <pre id="codeBlock"><code>{{ content.code }}</code></pre>
             </div>
         {% elif content.type == 'img' %}
-            <div class="div-img">
+            <div class="div-img" id="{{ content.name | replace(' ', '') }}">
                 <h3>{{ content.name }}</h3>
                 <img src="{{ content.source }}" alt="{{ content.name }}">
             </div>
         {% elif content.type == 'video' %}
-            <div class="div-video">
+            <div class="div-video" id="{{ content.name | replace(' ', '') }}">
                 <h3>{{ content.name }}</h3>
                 <video src="{{ content.source }}" controls></video>
             </div>
         {% elif content.type == 'additional_information' %}
-            <div class="div-p">
+            <div class="div-p" id="{{ content.name | replace(' ', '') }}">
                 <h3>{{ content.name }}</h3>
                 <p>{{ content.description }}</p>
             </div>
         {% endif %}
         </div>
     {% endfor %}
+    <script src="script.js"></script>
+
 </body>
 </html>
