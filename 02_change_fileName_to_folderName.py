@@ -13,6 +13,8 @@ new_filename = script_folder_name + "_thumbnail.png"
 def drop(event):
     filepath = event.data
     #エラーになる文字を取り除く
+    filepath = filepath.strip('{}')
+    
     print("ファイルがドロップされました: ", filepath)
     
     # Open the image file
