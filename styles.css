@@ -171,3 +171,57 @@ table {
   tr:nth-child(even) {
     background-color: #f2f2f2;
   }
+
+/* トップページ */
+.div-toppage_link {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 90%; /* Adjust this to change the width */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: medium solid #cacaca;
+    background-color: #eeeeee;
+}
+
+.category {
+    width: 50%; /* Adjust this to change the width */
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: medium solid #cacaca;
+    background-color: #143351;
+}
+.category h2{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.category a{
+    color: #eeeeee;
+    text-decoration: none;
+}
+
+/* カテゴリーページ */
+
+.div-thumbnail_link {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 80%; /* Adjust this to change the width */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: medium solid #cacaca;
+    background-color: #eeeeee;
+}
+
+.item {
+    box-sizing: border-box;
+}

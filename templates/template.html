@@ -18,6 +18,8 @@
         {% for content in contents %}
             <li><a href="#{{ content.name | replace(' ', '') }}">{{ content.name }}</a></li>
         {% endfor %}
+        <!-- Add a link to the update data -->
+            <li><a href="#{{ update_data.name | replace(' ', '') }}">{{ update_data.name }}</a></li>
         </ul>
     </div>
 
@@ -100,6 +102,13 @@
         {% endif %}
         </div>
     {% endfor %}
+    <!-- This goes at the end of your template -->
+    <div class="div-p" id="{{ update_data.name | replace(' ', '') }}">
+        <h3>{{ update_data.name }}</h3>
+        <p>{{ update_data.content|safe }}</p>
+    </div>
+    
+
     <script src="script.js"></script>
 
 </body>
